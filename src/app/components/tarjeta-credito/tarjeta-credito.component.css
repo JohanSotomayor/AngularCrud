@@ -1,0 +1,22 @@
+.bi{
+    cursor: pointer;
+}
+.bi:hover{
+ background-color:rgba(143, 47, 211, 0.2);
+}
+
+
+.validGreen{
+    color: green;
+
+}
+.inputGreen{
+    border: 1px solid green;
+}
+
+.invalidRed{
+    color:red;
+}
+.inputRed{
+    border: 1px solid red;
+}

@@ -1,0 +1,72 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 ">
+            <div class="card">
+                <div class="card-body text-center">
+                    <H1>{{accion | uppercase}} FORMULARIO</H1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5> titulo 1</h5>
+                <form [formGroup]="form" (ngSubmit)='agregar()'>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="bi bi-person-circle" [class.validGreen]="this.form.get('nombre')?.valid" [class.invalidRed]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"></i>
+                    </span>
+                    <input formControlName="nombre" type="text" class="form-control" placeholder="Username" [class.inputGreen]="this.form.get('nombre')?.valid" [class.inputRed]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched ">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card-2-back" [class.validGreen]="this.form.get('numero')?.valid" [class.invalidRed]="this.form.get('numero')?.invalid && this.form.get('numero')?.touched"></i></span>
+                    <input formControlName="numero" type="text" maxlength="8"   class="form-control" placeholder="numero"  [class.inputGreen]="this.form.get('numero')?.valid" [class.inputRed]="this.form.get('numero')?.invalid && this.form.get('numero')?.touched ">
+                  </div>
+                <div class="row">
+                    <div class="col-lg-7">
+            <div class="input-group mb-3 ">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-week" [class.validGreen]="this.form.get('fecha')?.valid" [class.invalidRed]="this.form.get('fecha')?.invalid && this.form.get('fecha')?.touched"></i></span>
+                <input formControlName="fecha" type="month" class="form-control" placeholder="MM/YY"  [class.inputGreen]="this.form.get('fecha')?.valid" [class.inputRed]="this.form.get('fecha')?.invalid && this.form.get('fecha')?.touched ">
+            </div>  
+            </div>
+            <div class="col-lg-4">
+            <div class="input-group mb-3 ">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-key" [class.validGreen]="this.form.get('cvv')?.valid" [class.invalidRed]="this.form.get('cvv')?.invalid && this.form.get('cvv')?.touched"></i></span>
+                <input formControlName="cvv" type="password" class="form-control" placeholder="CVV"  maxlength="3" [class.inputGreen]="this.form.get('cvv')?.valid" [class.inputRed]="this.form.get('cvv')?.invalid && this.form.get('cvv')?.touched ">
+            </div>
+            </div> 
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" [disabled]="this.form.invalid"><i class="bi bi-cloud-arrow-down bi-lg-2" style="font-size: 1.3em" ></i>&nbsp;Enviar</button>
+            </div>
+            </form>
+            
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5> Titulo 2</h5>
+                <table class="table">
+                    <tbody>
+                        <tr  *ngFor='let tarjeta of ListTarjeta; let i = index'>
+                            <td>{{tarjeta.nombre}}</td>
+                            <td>{{tarjeta.numero}}</td>
+                            <td>{{tarjeta.fecha}}</td>
+                            <td><i class="bi bi-pencil-square text-info" (click)="editarTC(tarjeta)"></i></td>
+                            <td>
+                                <i (click)="borrarTC(tarjeta.id)" class="bi bi-trash3-fill text-danger" ></i>  </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
